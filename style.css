@@ -1,0 +1,1439 @@
+/* ====================================================
+   LANDING PAGE AULÃO ITBI NA HOLDING PÓS TEMA 1348
+   Dra. Mariana Arteiro
+   Design System: Burgundy & Champagne Gold Luxe (Padrão Black Friday)
+   Paleta Oficial (extraída de Paleta de cores.jpeg):
+     - #4F112A (Bordô / Vinho Principal)
+     - #1E0008 (Bordô Escuro Profundo / Base Background)
+     - #F5EAAA (Dourado Champagne Claro)
+     - #FFFFFF (Branco Contraste)
+   ==================================================== */
+
+:root {
+    /* Paleta Oficial da Pasta */
+    --color-burgundy: #4F112A;
+    --color-burgundy-light: #6B1839;
+    --color-burgundy-deep: #1E0008;
+    --color-burgundy-darkest: #120004;
+    --color-burgundy-card: #290511;
+    --color-burgundy-elevated: #38091A;
+
+    --color-gold: #F5EAAA;
+    --color-gold-warm: #E5D18A;
+    --color-gold-deep: #CBB26A;
+    --color-white: #FFFFFF;
+    --color-text-light: #F7F2F4;
+    --color-text-muted: #D5C2C9;
+
+    /* Gradientes Sofisticados */
+    --gradient-gold: linear-gradient(135deg, #E5D18A 0%, #F5EAAA 50%, #D4BC72 100%);
+    --gradient-gold-hover: linear-gradient(135deg, #F5EAAA 0%, #FFF8D6 50%, #E5D18A 100%);
+    --gradient-burgundy-hero: radial-gradient(circle at 55% 28%, #5D1432 0%, #4F112A 32%, #1E0008 82%, #140005 100%);
+    --gradient-burgundy-card: linear-gradient(155deg, rgba(79, 17, 42, 0.72) 0%, rgba(30, 0, 8, 0.94) 100%);
+    --gradient-burgundy-offer: radial-gradient(ellipse at 50% 0%, rgba(107, 24, 57, 0.65) 0%, rgba(41, 5, 17, 0.96) 55%, rgba(22, 0, 6, 0.99) 100%);
+
+    /* Bordas e Sombras */
+    --border-gold-subtle: 1px solid rgba(245, 234, 170, 0.22);
+    --border-gold-medium: 1px solid rgba(245, 234, 170, 0.42);
+    --border-gold-strong: 1.5px solid rgba(245, 234, 170, 0.68);
+    --shadow-gold-glow: 0 0 38px rgba(245, 234, 170, 0.24);
+    --shadow-gold-small: 0 6px 20px rgba(245, 234, 170, 0.18);
+    --shadow-card-deep: 0 18px 50px rgba(10, 0, 3, 0.75);
+
+    /* Botão Verde de Alta Conversão (Checkout / WhatsApp) */
+    --color-green-btn: #25D366;
+    --gradient-green-btn: linear-gradient(135deg, #25D366 0%, #1EBE5D 50%, #128C7E 100%);
+    --gradient-green-hover: linear-gradient(135deg, #2ae972 0%, #25d366 50%, #1cb557 100%);
+    --shadow-green-glow: 0 6px 26px rgba(37, 211, 102, 0.42);
+    --shadow-green-hover: 0 10px 36px rgba(37, 211, 102, 0.65);
+
+    /* Tipografia */
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* Transições */
+    --transition-smooth: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ====================================================
+   CONTROLE DE VERSÕES (AO VIVO vs GRAVADA)
+   ==================================================== */
+body.version-live .show-ver-recorded {
+    display: none !important;
+}
+
+body.version-recorded .show-ver-live {
+    display: none !important;
+}
+
+/* ====================================================
+   Reset & Base Styles
+   ==================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--color-burgundy-deep);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-white);
+    background-color: var(--color-burgundy-deep);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Divisores Dourados */
+.gold-divider {
+    width: 72px;
+    height: 2px;
+    background: var(--gradient-gold);
+    margin: 18px auto 0 auto;
+    border-radius: 2px;
+    box-shadow: 0 0 12px rgba(245, 234, 170, 0.45);
+}
+
+.gold-divider.left {
+    margin: 14px 0 22px 0;
+}
+
+/* ====================================================
+   Cabeçalhos de Seção
+   ==================================================== */
+.section-header {
+    max-width: 860px;
+    margin: 0 auto 56px auto;
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.22;
+    color: var(--color-white);
+    letter-spacing: -0.01em;
+}
+
+/* ====================================================
+   Botões de Alta Conversão
+   ==================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 36px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.btn span {
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.btn i {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover i {
+    transform: translateX(4px);
+}
+
+/* Botão Dourado Champagne (Hero) */
+.btn-gold {
+    background: var(--gradient-gold);
+    color: var(--color-burgundy-deep);
+    box-shadow: 0 8px 30px rgba(245, 234, 170, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--gradient-gold-hover);
+    color: var(--color-burgundy-darkest);
+    box-shadow: 0 14px 38px rgba(245, 234, 170, 0.48), inset 0 1px 2px rgba(255, 255, 255, 0.85);
+}
+
+/* Botão Verde de Checkout */
+.btn-green-checkout {
+    background: var(--gradient-green-btn);
+    color: var(--color-white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--shadow-green-glow);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.btn-green-checkout:hover {
+    transform: translateY(-3px) scale(1.02);
+    background: var(--gradient-green-hover);
+    color: var(--color-white);
+    box-shadow: var(--shadow-green-hover);
+}
+
+/* Efeito Brilho nos Botões */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 38%,
+        rgba(255, 255, 255, 0.35) 50%,
+        transparent 62%
+    );
+    transform: rotate(25deg) translateY(-120%);
+    animation: shine-sweep 4.5s infinite ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes shine-sweep {
+    0% {
+        transform: rotate(25deg) translateY(-130%);
+    }
+    30%, 100% {
+        transform: rotate(25deg) translateY(130%);
+    }
+}
+
+.btn-large {
+    padding: 20px 44px;
+    font-size: 1.18rem;
+    border-radius: 14px;
+}
+
+/* ====================================================
+   TARJA DE TOPO FIXA (BLOCO 1 - TARJA)
+   ==================================================== */
+.top-fixed-bar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 0, 8, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(245, 234, 170, 0.32);
+    z-index: 1000;
+    padding: 12px 0;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.65);
+}
+
+.top-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-bar-tarja {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 20px;
+    background: rgba(79, 17, 42, 0.65);
+    border: 1px solid rgba(245, 234, 170, 0.45);
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(245, 234, 170, 0.12);
+}
+
+.tarja-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #25D366;
+    box-shadow: 0 0 10px #25D366;
+    flex-shrink: 0;
+    animation: pulse-dot 1.8s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.28);
+        opacity: 0.75;
+    }
+}
+
+/* ====================================================
+   [BLOCO 1] - HERO SECTION
+   ==================================================== */
+.hero-section {
+    position: relative;
+    min-height: calc(100vh - 54px);
+    padding: 36px 0 0 0;
+    display: flex;
+    align-items: stretch;
+    background: var(--gradient-burgundy-hero);
+    border-bottom: 1px solid rgba(245, 234, 170, 0.32);
+    overflow: hidden;
+}
+
+.hero-ambient-glow {
+    position: absolute;
+    top: -10%;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 1100px;
+    height: 550px;
+    background: radial-gradient(ellipse, rgba(245, 234, 170, 0.14) 0%, rgba(79, 17, 42, 0.25) 45%, transparent 72%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(rgba(245, 234, 170, 0.06) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1380px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: flex-end;
+    width: 100%;
+    flex: 1;
+}
+
+.hero-text-col {
+    padding: 20px 0 68px 0;
+    z-index: 3;
+    max-width: 690px;
+    margin: auto 0;
+}
+
+.hero-logo-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 28px;
+}
+
+.hero-logo {
+    max-width: 310px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 22px rgba(245, 234, 170, 0.28));
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.25rem, 3.3vw, 3.35rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-white);
+    margin-bottom: 22px;
+    letter-spacing: -0.015em;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.06rem, 1.25vw, 1.22rem);
+    line-height: 1.6;
+    color: var(--color-gold);
+    font-weight: 400;
+    margin-bottom: 34px;
+    max-width: 630px;
+}
+
+.hero-cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Coluna da Foto da Dra. Mariana */
+.hero-image-col {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.experts-photo-frame {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.photo-aura-backdrop {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 234, 170, 0.22) 0%, rgba(79, 17, 42, 0.45) 50%, transparent 72%);
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.img-experts-all {
+    position: relative;
+    z-index: 2;
+    max-height: calc(100vh - 115px);
+    min-height: 480px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 18px 42px rgba(12, 0, 4, 0.85));
+    transition: var(--transition-smooth);
+}
+
+/* ====================================================
+   [BLOCO 2] - O PROBLEMA
+   ==================================================== */
+.problem-section {
+    position: relative;
+    padding: 110px 0;
+    background: radial-gradient(circle at 50% 20%, rgba(79, 17, 42, 0.48) 0%, var(--color-burgundy-deep) 75%);
+    border-bottom: 1px solid rgba(245, 234, 170, 0.18);
+    overflow: hidden;
+}
+
+.section-ambient-glow {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 850px;
+    height: 550px;
+    background: radial-gradient(ellipse, rgba(245, 234, 170, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.problem-cards-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 44px;
+}
+
+.problem-card {
+    background: var(--gradient-burgundy-card);
+    border: var(--border-gold-subtle);
+    border-radius: 22px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow-card-deep);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(245, 234, 170, 0.55), transparent);
+    opacity: 0.6;
+}
+
+.problem-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(245, 234, 170, 0.58);
+    box-shadow: 0 22px 55px rgba(10, 0, 3, 0.9), 0 0 28px rgba(245, 234, 170, 0.14);
+}
+
+.problem-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.problem-icon-pill {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: radial-gradient(circle, rgba(245, 234, 170, 0.2) 0%, rgba(245, 234, 170, 0.06) 100%);
+    border: 1.5px solid rgba(245, 234, 170, 0.48);
+    color: var(--color-gold);
+    font-size: 1.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(245, 234, 170, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.problem-card:hover .problem-icon-pill {
+    transform: scale(1.06) rotate(3deg);
+    border-color: var(--color-gold);
+    box-shadow: 0 6px 22px rgba(245, 234, 170, 0.32);
+}
+
+.problem-step-num {
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: rgba(245, 234, 170, 0.28);
+    letter-spacing: 0.04em;
+}
+
+.problem-card-text {
+    font-size: 1.06rem;
+    line-height: 1.68;
+    color: var(--color-text-light);
+    font-weight: 400;
+}
+
+/* Destaque de Conclusão do Bloco 2 */
+.problem-conclusion-wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.problem-conclusion-box {
+    background: linear-gradient(135deg, rgba(79, 17, 42, 0.88) 0%, rgba(30, 0, 8, 0.96) 100%);
+    border: var(--border-gold-strong);
+    border-radius: 22px;
+    padding: 32px 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    box-shadow: var(--shadow-card-deep), var(--shadow-gold-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.problem-conclusion-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.conclusion-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(245, 234, 170, 0.16);
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 1.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(245, 234, 170, 0.25);
+}
+
+.conclusion-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.25rem, 1.9vw, 1.6rem);
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1.38;
+    margin: 0;
+}
+
+/* ====================================================
+   [BLOCO 3] - CONTEÚDO E MINUTAS
+   ==================================================== */
+.content-section {
+    position: relative;
+    padding: 110px 0;
+    background: linear-gradient(180deg, var(--color-burgundy-darkest) 0%, var(--color-burgundy-deep) 50%, var(--color-burgundy-darkest) 100%);
+    border-bottom: 1px solid rgba(245, 234, 170, 0.18);
+}
+
+.content-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 52px;
+}
+
+.content-pillar-card {
+    background: linear-gradient(165deg, rgba(79, 17, 42, 0.55) 0%, rgba(25, 2, 10, 0.95) 100%);
+    border: var(--border-gold-subtle);
+    border-radius: 22px;
+    padding: 36px 30px;
+    box-shadow: var(--shadow-card-deep);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: relative;
+}
+
+.content-pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(245, 234, 170, 0.65);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 25px rgba(245, 234, 170, 0.16);
+}
+
+.content-pillar-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: radial-gradient(circle, rgba(245, 234, 170, 0.22) 0%, rgba(79, 17, 42, 0.4) 100%);
+    border: 1.5px solid rgba(245, 234, 170, 0.52);
+    color: var(--color-gold);
+    font-size: 1.95rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 18px rgba(245, 234, 170, 0.18);
+    transition: var(--transition-smooth);
+}
+
+.content-pillar-card:hover .content-pillar-icon {
+    transform: scale(1.08);
+    background: var(--gradient-gold);
+    color: var(--color-burgundy-deep);
+}
+
+.content-pillar-text {
+    font-size: 1.06rem;
+    line-height: 1.68;
+    color: var(--color-white);
+    font-weight: 400;
+}
+
+/* Sub-bloco Vitrine das 2 Minutas */
+.minutas-showcase-box {
+    max-width: 1020px;
+    margin: 0 auto 48px auto;
+    background: radial-gradient(ellipse at 50% 0%, rgba(107, 24, 57, 0.55) 0%, rgba(34, 4, 14, 0.96) 80%);
+    border: var(--border-gold-strong);
+    border-radius: 26px;
+    padding: 46px 44px;
+    box-shadow: var(--shadow-card-deep), 0 0 35px rgba(245, 234, 170, 0.14);
+    position: relative;
+}
+
+.minutas-header {
+    margin-bottom: 34px;
+}
+
+.minutas-header-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(245, 234, 170, 0.15);
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-gold);
+    font-size: 1.9rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 0 22px rgba(245, 234, 170, 0.25);
+}
+
+.minutas-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.55rem, 2.3vw, 2.05rem);
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1.3;
+}
+
+.minutas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+}
+
+.minuta-card {
+    background: rgba(20, 0, 6, 0.72);
+    border: 1px solid rgba(245, 234, 170, 0.35);
+    border-radius: 18px;
+    padding: 28px 26px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    transition: var(--transition-smooth);
+}
+
+.minuta-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 234, 170, 0.16);
+}
+
+.minuta-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(245, 234, 170, 0.14);
+    border: 1px solid rgba(245, 234, 170, 0.45);
+    color: var(--color-gold);
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.minuta-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-white);
+    font-weight: 500;
+}
+
+/* Fechamento de ROI */
+.roi-highlight-banner {
+    max-width: 920px;
+    margin: 0 auto;
+    background: rgba(79, 17, 42, 0.4);
+    border: 1px dashed rgba(245, 234, 170, 0.48);
+    border-radius: 18px;
+    padding: 26px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    text-align: center;
+}
+
+.roi-icon {
+    font-size: 2.1rem;
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.roi-text {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 1.6vw, 1.38rem);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--color-gold);
+    line-height: 1.48;
+}
+
+/* ====================================================
+   [BLOCO 4] - OFERTA E CHECKOUT
+   ==================================================== */
+.offer-section {
+    position: relative;
+    padding: 110px 0;
+    background: radial-gradient(circle at 50% 35%, rgba(79, 17, 42, 0.65) 0%, var(--color-burgundy-deep) 78%);
+    border-bottom: 1px solid rgba(245, 234, 170, 0.22);
+    overflow: hidden;
+}
+
+.offer-ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 780px;
+    height: 780px;
+    background: radial-gradient(circle, rgba(245, 234, 170, 0.14) 0%, rgba(79, 17, 42, 0.28) 45%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.offer-card {
+    position: relative;
+    z-index: 2;
+    max-width: 660px;
+    margin: 0 auto;
+    background: var(--gradient-burgundy-offer);
+    border: 2px solid var(--color-gold);
+    border-radius: 28px;
+    padding: 52px 48px 46px 48px;
+    text-align: center;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.9), 0 0 48px rgba(245, 234, 170, 0.22);
+}
+
+.offer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #FFFFFF, var(--color-gold), transparent);
+    border-radius: 3px;
+}
+
+.offer-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 26px;
+}
+
+.offer-logo {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 16px rgba(245, 234, 170, 0.25));
+}
+
+.offer-header-block {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(245, 234, 170, 0.2);
+}
+
+.offer-main-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.55rem, 2.3vw, 2.05rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.28;
+    margin-bottom: 14px;
+}
+
+.offer-schedule-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(245, 234, 170, 0.13);
+    border: 1px solid rgba(245, 234, 170, 0.45);
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-gold);
+}
+
+.offer-deliverables-list {
+    list-style: none;
+    max-width: 480px;
+    margin: 0 auto 32px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+}
+
+.offer-deliverables-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(20, 0, 6, 0.6);
+    border: 1px solid rgba(245, 234, 170, 0.22);
+    border-radius: 14px;
+    font-size: 1.04rem;
+    font-weight: 500;
+    color: var(--color-white);
+    transition: var(--transition-smooth);
+}
+
+.offer-deliverables-list li:hover {
+    border-color: rgba(245, 234, 170, 0.55);
+    background: rgba(79, 17, 42, 0.45);
+}
+
+.offer-deliverables-list li i {
+    font-size: 1.35rem;
+    color: #25D366;
+    flex-shrink: 0;
+}
+
+.offer-price-display {
+    margin: 28px 0 30px 0;
+    padding: 20px 24px;
+    background: radial-gradient(ellipse at center, rgba(245, 234, 170, 0.14) 0%, transparent 75%);
+    border-radius: 18px;
+}
+
+.offer-price-value {
+    font-family: var(--font-heading);
+    font-size: clamp(3.4rem, 5.5vw, 4.6rem);
+    font-weight: 800;
+    line-height: 1;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 22px rgba(245, 234, 170, 0.32));
+}
+
+.offer-cta-wrap {
+    margin-bottom: 24px;
+}
+
+.offer-cta-wrap .btn {
+    width: 100%;
+    max-width: 460px;
+    font-size: 1.22rem;
+    padding: 20px 32px;
+}
+
+.offer-below-btn-note {
+    font-size: 0.94rem;
+    line-height: 1.62;
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin: 0 auto;
+    padding-top: 18px;
+    border-top: 1px solid rgba(245, 234, 170, 0.16);
+}
+
+/* ====================================================
+   [BLOCO 5] - ESPECIALISTA (DRA. MARIANA ARTEIRO)
+   ==================================================== */
+.experts-section {
+    padding: 110px 0;
+    background: var(--color-burgundy-darkest);
+}
+
+.expert-card {
+    max-width: 1060px;
+    margin: 0 auto;
+    background: var(--gradient-burgundy-card);
+    border: var(--border-gold-medium);
+    border-radius: 26px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 48px;
+    align-items: center;
+    box-shadow: var(--shadow-card-deep);
+    transition: var(--transition-smooth);
+}
+
+.expert-card:hover {
+    border-color: rgba(245, 234, 170, 0.68);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 234, 170, 0.14);
+}
+
+.expert-photo-col {
+    display: flex;
+    justify-content: center;
+}
+
+.expert-avatar-wrap {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 35%, #6B1839 0%, #290511 65%, #150005 100%);
+    border: 1.5px solid rgba(245, 234, 170, 0.45);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.expert-photo-backdrop {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 234, 170, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.expert-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    transition: var(--transition-smooth);
+}
+
+.expert-card:hover .expert-img {
+    transform: scale(1.03);
+}
+
+.expert-photo-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: linear-gradient(to top, rgba(21, 0, 5, 0.88), transparent);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.expert-name {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 2.8vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1.2;
+}
+
+.expert-bio p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    margin-bottom: 14px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.expert-bio p:last-child {
+    margin-bottom: 0;
+    color: var(--color-gold);
+    font-weight: 500;
+}
+
+/* ====================================================
+   RODAPÉ
+   ==================================================== */
+.footer {
+    padding: 44px 0;
+    background: #0D0003;
+    border-top: 1px solid rgba(245, 234, 170, 0.16);
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo img {
+    max-width: 210px;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 12px rgba(245, 234, 170, 0.2));
+}
+
+/* ====================================================
+   PÁGINA DE OBRIGADO (obrigado.html)
+   ==================================================== */
+.thankyou-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--gradient-burgundy-hero);
+}
+
+.thankyou-main {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+    overflow: hidden;
+}
+
+.thankyou-container {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    width: 100%;
+}
+
+.thankyou-card {
+    background: var(--gradient-burgundy-offer);
+    border: 2px solid var(--color-gold);
+    border-radius: 28px;
+    padding: 50px 44px;
+    text-align: center;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.9), 0 0 45px rgba(245, 234, 170, 0.2);
+    position: relative;
+}
+
+.thankyou-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.thankyou-logo {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 16px rgba(245, 234, 170, 0.25));
+}
+
+.thankyou-icon-badge {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3rem;
+    margin-bottom: 22px;
+}
+
+.thankyou-icon-badge.badge-whatsapp {
+    background: rgba(37, 211, 102, 0.16);
+    border: 1.5px solid #25D366;
+    color: #25D366;
+    box-shadow: 0 0 25px rgba(37, 211, 102, 0.32);
+}
+
+.thankyou-icon-badge.badge-gold {
+    background: rgba(245, 234, 170, 0.16);
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-gold);
+    box-shadow: 0 0 25px rgba(245, 234, 170, 0.28);
+}
+
+.thankyou-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.85rem, 3vw, 2.45rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.24;
+    margin-bottom: 18px;
+}
+
+.thankyou-description {
+    font-size: 1.1rem;
+    line-height: 1.62;
+    color: var(--color-gold);
+    margin-bottom: 32px;
+}
+
+.thankyou-cta-wrap {
+    margin-bottom: 26px;
+}
+
+.thankyou-cta-wrap .btn {
+    width: 100%;
+    max-width: 420px;
+}
+
+.thankyou-fallback-text {
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    background: rgba(18, 0, 4, 0.65);
+    border: 1px dashed rgba(245, 234, 170, 0.3);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    word-break: break-word;
+}
+
+.thankyou-placeholder-link {
+    color: var(--color-gold);
+    font-weight: 600;
+}
+
+.thankyou-event-footer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    padding: 8px 18px;
+    background: rgba(245, 234, 170, 0.1);
+    border: 1px solid rgba(245, 234, 170, 0.35);
+    border-radius: 999px;
+}
+
+/* ====================================================
+   Animação Suave de Revelação no Scroll
+   ==================================================== */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====================================================
+   RESPONSIVIDADE (TABLET & MOBILE)
+   ==================================================== */
+@media (max-width: 1024px) {
+    .hero-section {
+        min-height: auto;
+        padding: 20px 0 48px 0;
+    }
+
+    .hero-container {
+        padding: 0 24px;
+    }
+
+    /* Reordenação estilo Black Friday no Mobile/Tablet */
+    .hero-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .hero-image-col {
+        order: 1;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .img-experts-all {
+        max-height: none;
+        min-height: 0;
+        width: 100%;
+        max-width: clamp(250px, 60vw, 370px);
+        margin: 0 auto;
+        -webkit-mask-image: linear-gradient(to bottom, #000000 62%, rgba(0, 0, 0, 0.65) 82%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000000 62%, rgba(0, 0, 0, 0.65) 82%, transparent 100%);
+    }
+
+    .hero-text-col {
+        order: 2;
+        padding: 0;
+        margin-top: -18px;
+        text-align: center;
+        max-width: 680px;
+    }
+
+    .hero-logo-wrapper {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .hero-logo {
+        max-width: 260px;
+    }
+
+    .hero-subtitle {
+        margin: 0 auto 28px auto;
+    }
+
+    .hero-cta-wrapper {
+        align-items: center;
+    }
+
+    .problem-cards-grid,
+    .content-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .minutas-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .expert-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 38px 28px;
+        gap: 32px;
+    }
+
+    .expert-info-col .gold-divider.left {
+        margin: 14px auto 24px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    .container {
+        padding: 0 18px;
+    }
+
+    .top-bar-tarja {
+        font-size: 0.74rem;
+        padding: 5px 14px;
+        letter-spacing: 0.06em;
+        text-align: center;
+    }
+
+    .img-experts-all {
+        max-width: clamp(230px, 72vw, 310px);
+    }
+
+    .hero-logo {
+        max-width: clamp(200px, 64vw, 250px);
+    }
+
+    .hero-title {
+        font-size: clamp(1.7rem, 5.6vw, 2.15rem);
+        line-height: 1.2;
+        margin-bottom: 16px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.55;
+        margin-bottom: 24px;
+    }
+
+    .btn-large {
+        width: 100%;
+        max-width: 370px;
+        padding: 18px 24px;
+        font-size: 1.08rem;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .problem-section,
+    .content-section,
+    .offer-section,
+    .experts-section {
+        padding: 76px 0;
+    }
+
+    .section-header {
+        margin-bottom: 38px;
+    }
+
+    .problem-card,
+    .content-pillar-card {
+        padding: 28px 22px;
+    }
+
+    .problem-conclusion-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 28px 22px;
+        gap: 16px;
+    }
+
+    .minutas-showcase-box {
+        padding: 32px 20px;
+        border-radius: 20px;
+    }
+
+    .minuta-card {
+        padding: 22px 18px;
+    }
+
+    .roi-highlight-banner {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 12px;
+    }
+
+    .offer-card {
+        padding: 38px 22px 34px 22px;
+        border-radius: 22px;
+    }
+
+    .offer-logo {
+        max-width: 195px;
+    }
+
+    .offer-deliverables-list li {
+        padding: 12px 14px;
+        font-size: 0.96rem;
+    }
+
+    .expert-avatar-wrap {
+        width: 250px;
+        height: 320px;
+    }
+
+    .expert-bio p {
+        font-size: 0.95rem;
+        text-align: left;
+    }
+
+    .thankyou-card {
+        padding: 36px 22px;
+        border-radius: 22px;
+    }
+}
