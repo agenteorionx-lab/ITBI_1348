@@ -7,23 +7,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ====================================================
-       1. CONTROLE AUTOMÁTICO DE VERSÃO POR DATA
-       - Até 02/12/2026 às 23:59:59 -> Versão Ao Vivo ('live')
-       - Após 02/12/2026 às 23:59:59 (03/12 em diante) -> Versão Gravada ('recorded')
+       1. CONTROLE AUTOMÁTICO DE VERSÃO POR DATA (HORÁRIO DE BRASÍLIA)
+       - Até 02/12/2026 às 23:59:59 (BRT / UTC-3) -> Versão Ao Vivo ('live')
+       - A partir de 03/12/2026 às 00:00:00 (BRT / UTC-3) -> Versão Gravada ('recorded')
+       - Monitora em tempo real (a cada 1 segundo) para virar automaticamente
+         mesmo se o visitante estiver com a aba aberta na virada da meia-noite.
        - Permite forçar via parâmetro na URL para visualização/teste:
          ?v=aovivo  ou ?v=live      -> Versão Ao Vivo
          ?v=gravada ou ?v=gravado   -> Versão Gravada
        ==================================================== */
-    function getAutoVersion() {
-        const now = new Date();
-        // Mês 11 no JS equivale a Dezembro (0 = Janeiro ... 11 = Dezembro)
-        const cutoffLive = new Date(2026, 11, 2, 23, 59, 59);
+    const CUTOFF_LIVE_BRT = new Date('2026-12-02T23:59:59-03:00').getTime();
 
-        if (now <= cutoffLive) {
-            return 'live';
-        } else {
-            return 'recorded';
-        }
+    function getAutoVersion() {
+        return Date.now() <= CUTOFF_LIVE_BRT ? 'live' : 'recorded';
     }
 
     function resolveVersion() {
@@ -40,14 +36,21 @@ document.addEventListener('DOMContentLoaded', () => {
         return getAutoVersion();
     }
 
-    const activeVersion = resolveVersion();
+    function applyVersion() {
+        const activeVersion = resolveVersion();
+        const isRecorded = activeVersion === 'recorded';
 
-    document.body.classList.remove('version-live', 'version-recorded');
-    if (activeVersion === 'recorded') {
-        document.body.classList.add('version-recorded');
-    } else {
-        document.body.classList.add('version-live');
+        if (isRecorded && !document.body.classList.contains('version-recorded')) {
+            document.body.classList.remove('version-live');
+            document.body.classList.add('version-recorded');
+        } else if (!isRecorded && !document.body.classList.contains('version-live')) {
+            document.body.classList.remove('version-recorded');
+            document.body.classList.add('version-live');
+        }
     }
+
+    applyVersion();
+    setInterval(applyVersion, 1000);
 
     /* ====================================================
        2. ANIMAÇÃO DE REVELAÇÃO SUAVE NO SCROLL
