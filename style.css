@@ -48,7 +48,7 @@
     --shadow-green-hover: 0 10px 36px rgba(37, 211, 102, 0.65);
 
     /* Tipografia */
-    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-heading: 'Lora', Georgia, serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     /* Transições */
@@ -90,6 +90,8 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: lining-nums;
+    font-feature-settings: "lnum" 1;
 }
 
 img {
